@@ -41,14 +41,14 @@ class JSONURLRequestTests: XCTestCase {
         XCTAssertEqual(request.cachePolicy, config.cachePolicy)
     }
     
-    // MARK: endPoint
+    // MARK: endpoint
     
-    func test_endPoint_setURL() {
-        let endPoint = "something/example"
+    func test_endpoint_setURL() {
+        let endpoint = "something/example"
         
-        request.endPoint = endPoint
+        request.endpoint = endpoint
         
-        let expectedURL = NSURL(string: "\(config.APIHost)/v\(config.APIVersion)/\(endPoint)")!
+        let expectedURL = NSURL(string: "\(config.APIHost)/v\(config.APIVersion)/\(endpoint)")!
         
         XCTAssertEqual(expectedURL, request.URL!)
     }

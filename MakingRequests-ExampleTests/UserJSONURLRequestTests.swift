@@ -20,10 +20,10 @@ class UserJSONURLRequestTests: XCTestCase {
         XCTAssertEqual(request.HTTPMethod, HTTPRequestMethod.GET.rawValue)
     }
     
-    func test_retrieveProfileRequest_endPoint() {
+    func test_retrieveProfileRequest_endpoint() {
         let request = UserJSONURLRequest.retrieveProfileRequest()
         
-        XCTAssertEqual(request.endPoint, "users/me/profile")
+        XCTAssertEqual(request.endpoint, "users/me/profile")
     }
     
     // MARK: updateProfileRequest
@@ -40,7 +40,7 @@ class UserJSONURLRequestTests: XCTestCase {
         XCTAssertEqual(request.HTTPMethod, HTTPRequestMethod.PUT.rawValue)
     }
     
-    func test_updateProfileRequest_endPoint() {
+    func test_updateProfileRequest_endpoint() {
         let username = "toby190"
         let emailAddress = "toby@test.com"
         let firstName = "toby"
@@ -49,7 +49,7 @@ class UserJSONURLRequestTests: XCTestCase {
         
         let request = UserJSONURLRequest.updateProfileRequest(username, emailAddress: emailAddress, firstname: firstName, lastname: lastName, dateOfBirth: dateOfBirth)
         
-        XCTAssertEqual(request.endPoint, "users/me/profile")
+        XCTAssertEqual(request.endpoint, "users/me/profile")
     }
     
     func test_updateProfileRequest_parameters() {
@@ -83,10 +83,10 @@ class UserJSONURLRequestTests: XCTestCase {
         XCTAssertEqual(request.HTTPMethod, HTTPRequestMethod.POST.rawValue)
     }
     
-    func test_forgottenPasswordEmailToBeSentRequest_endPoint() {
+    func test_forgottenPasswordEmailToBeSentRequest_endpoint() {
         let request = UserJSONURLRequest.forgottenPasswordEmailToBeSentRequest("example@test.com")
         
-        XCTAssertEqual(request.endPoint, "users/me/password/forgot")
+        XCTAssertEqual(request.endpoint, "users/me/password/forgot")
     }
     
     func test_forgottenPasswordEmailToBeSentRequest_parameters() {
@@ -105,12 +105,12 @@ class UserJSONURLRequestTests: XCTestCase {
         XCTAssertEqual(request.HTTPMethod, HTTPRequestMethod.POST.rawValue)
     }
     
-    func test_blockUserRequest_endPoint() {
+    func test_blockUserRequest_endpoint() {
         let userID = "345"
         
         let request = UserJSONURLRequest.blockUserRequest(userID)
         
-        XCTAssertEqual(request.endPoint, "users/\(userID)/block")
+        XCTAssertEqual(request.endpoint, "users/\(userID)/block")
     }
     
     // MARK: unblockUserRequest
@@ -121,12 +121,12 @@ class UserJSONURLRequestTests: XCTestCase {
         XCTAssertEqual(request.HTTPMethod, HTTPRequestMethod.DELETE.rawValue)
     }
     
-    func test_unblockUserRequest_endPoint() {
+    func test_unblockUserRequest_endpoint() {
         let userID = "3845"
         
         let request = UserJSONURLRequest.unblockUserRequest(userID)
         
-        XCTAssertEqual(request.endPoint, "users/\(userID)/block")
+        XCTAssertEqual(request.endpoint, "users/\(userID)/block")
     }
     
 }

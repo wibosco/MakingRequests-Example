@@ -16,7 +16,7 @@ class UserJSONURLRequest: JSONURLRequest {
         let request = UserJSONURLRequest()
         
         request.HTTPMethod = HTTPRequestMethod.GET.rawValue
-        request.endPoint = "users/me/profile"
+        request.endpoint = "users/me/profile"
         
         return request
     }
@@ -25,7 +25,7 @@ class UserJSONURLRequest: JSONURLRequest {
         let request = UserJSONURLRequest()
         
         request.HTTPMethod = HTTPRequestMethod.PUT.rawValue
-        request.endPoint = "users/me/profile"
+        request.endpoint = "users/me/profile"
         request.parameters = ["username": username,
                               "email_address": emailAddress,
                               "first_name": firstname,
@@ -41,7 +41,7 @@ class UserJSONURLRequest: JSONURLRequest {
         let request = UserJSONURLRequest()
         
         request.HTTPMethod = HTTPRequestMethod.POST.rawValue
-        request.endPoint = "users/me/password/forgot"
+        request.endpoint = "users/me/password/forgot"
         request.parameters = ["email_address" : emailAddress]
         
         return request
@@ -53,7 +53,7 @@ class UserJSONURLRequest: JSONURLRequest {
         let request = UserJSONURLRequest()
         
         request.HTTPMethod = HTTPRequestMethod.POST.rawValue
-        request.endPoint = "users/\(userID)/block"
+        request.endpoint = "users/\(userID)/block"
         
         return request
     }
@@ -62,7 +62,7 @@ class UserJSONURLRequest: JSONURLRequest {
         let request = UserJSONURLRequest()
         
         request.HTTPMethod = HTTPRequestMethod.DELETE.rawValue
-        request.endPoint = "users/\(userID)/block"
+        request.endpoint = "users/\(userID)/block"
         
         return request
     }

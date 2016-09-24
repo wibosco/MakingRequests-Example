@@ -35,9 +35,9 @@ class JSONURLRequest: NSMutableURLRequest {
         }
     }
     
-    var endPoint: String? {
+    var endpoint: String? {
         didSet {
-            let stringURL = "\(requestConfig.APIHost)/v\(requestConfig.APIVersion)/\(endPoint!)"
+            let stringURL = "\(requestConfig.APIHost)/v\(requestConfig.APIVersion)/\(endpoint!)"
             self.URL = NSURL(string: stringURL)
         }
     }
