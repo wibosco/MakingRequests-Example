@@ -1,0 +1,10 @@
+language: objective-c
+
+osx_image: xcode7.3
+
+script:
+   xcodebuild -project MakingRequests-Example.xcodeproj -scheme MakingRequests-Example test -sdk iphonesimulator
+
+
+
+
