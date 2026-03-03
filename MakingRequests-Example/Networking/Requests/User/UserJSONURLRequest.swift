@@ -15,22 +15,26 @@ class UserJSONURLRequest: JSONURLRequest {
     class func retrieveProfileRequest() -> UserJSONURLRequest {
         let request = UserJSONURLRequest()
         
-        request.HTTPMethod = HTTPRequestMethod.GET.rawValue
+        request.httpMethod = HTTPRequestMethod.GET.rawValue
         request.endpoint = "users/me/profile"
         
         return request
     }
     
-    class func updateProfileRequest(username: String, emailAddress: String, firstname: String, lastname: String, dateOfBirth: NSDate) -> UserJSONURLRequest {
+    class func updateProfileRequest(username: String,
+                                    emailAddress: String,
+                                    firstname: String,
+                                    lastname: String,
+                                    dateOfBirth: Date) -> UserJSONURLRequest {
         let request = UserJSONURLRequest()
         
-        request.HTTPMethod = HTTPRequestMethod.PUT.rawValue
+        request.httpMethod = HTTPRequestMethod.PUT.rawValue
         request.endpoint = "users/me/profile"
-        request.parameters = ["username": username,
-                              "email_address": emailAddress,
-                              "first_name": firstname,
-                              "last_name": lastname,
-                              "date_of_birth": requestDateFormatter.stringFromDate(dateOfBirth)]
+        request.parameters = ["username": username as AnyObject,
+                              "email_address": emailAddress as AnyObject,
+                              "first_name": firstname as AnyObject,
+                              "last_name": lastname as AnyObject,
+                              "date_of_birth": requestDateFormatter.string(from: dateOfBirth) as AnyObject]
         
         return request
     }
@@ -40,9 +44,9 @@ class UserJSONURLRequest: JSONURLRequest {
     class func forgottenPasswordEmailToBeSentRequest(emailAddress: String) -> UserJSONURLRequest {
         let request = UserJSONURLRequest()
         
-        request.HTTPMethod = HTTPRequestMethod.POST.rawValue
+        request.httpMethod = HTTPRequestMethod.POST.rawValue
         request.endpoint = "users/me/password/forgot"
-        request.parameters = ["email_address" : emailAddress]
+        request.parameters = ["email_address" : emailAddress as AnyObject]
         
         return request
     }
@@ -52,7 +56,7 @@ class UserJSONURLRequest: JSONURLRequest {
     class func blockUserRequest(userID: String) -> UserJSONURLRequest {
         let request = UserJSONURLRequest()
         
-        request.HTTPMethod = HTTPRequestMethod.POST.rawValue
+        request.httpMethod = HTTPRequestMethod.POST.rawValue
         request.endpoint = "users/\(userID)/block"
         
         return request
@@ -61,7 +65,7 @@ class UserJSONURLRequest: JSONURLRequest {
     class func unblockUserRequest(userID: String) -> UserJSONURLRequest {
         let request = UserJSONURLRequest()
         
-        request.HTTPMethod = HTTPRequestMethod.DELETE.rawValue
+        request.httpMethod = HTTPRequestMethod.DELETE.rawValue
         request.endpoint = "users/\(userID)/block"
         
         return request

@@ -19,10 +19,10 @@ class JSONURLRequest: NSMutableURLRequest {
     
     // MARK: - Static
     
-    static let requestDateFormatter: NSDateFormatter = {
-        let requestDateFormatter = NSDateFormatter()
+    static let requestDateFormatter: DateFormatter = {
+        let requestDateFormatter = DateFormatter()
         requestDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        requestDateFormatter.timeZone = NSTimeZone(name:"UTC")
+        requestDateFormatter.timeZone = TimeZone(abbreviation:"UTC")
         
         return requestDateFormatter
     }()
@@ -31,14 +31,14 @@ class JSONURLRequest: NSMutableURLRequest {
     
     var parameters: [String: AnyObject]? {
         didSet {
-            self.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(parameters!, options: NSJSONWritingOptions(rawValue: 0))
+            self.httpBody = try! JSONSerialization.data(withJSONObject: parameters!, options: JSONSerialization.WritingOptions(rawValue: 0))
         }
     }
     
     var endpoint: String? {
         didSet {
             let stringURL = "\(requestConfig.APIHost)/v\(requestConfig.APIVersion)/\(endpoint!)"
-            self.URL = NSURL(string: stringURL)
+            self.url = URL(string: stringURL)
         }
     }
     
@@ -48,7 +48,9 @@ class JSONURLRequest: NSMutableURLRequest {
     
     init(requestConfig: RequestConfig = RequestConfig()) {
         self.requestConfig = requestConfig
-        super.init(URL: NSURL(string: requestConfig.APIHost)!, cachePolicy: requestConfig.cachePolicy, timeoutInterval: requestConfig.timeInterval)
+        super.init(url: URL(string: requestConfig.APIHost)!,
+                   cachePolicy: requestConfig.cachePolicy,
+                   timeoutInterval: requestConfig.timeInterval)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import MakingRequests_Example
+
 class JSONURLRequestTests: XCTestCase {
     
     // MARK: - Properties
@@ -48,9 +50,9 @@ class JSONURLRequestTests: XCTestCase {
         
         request.endpoint = endpoint
         
-        let expectedURL = NSURL(string: "\(config.APIHost)/v\(config.APIVersion)/\(endpoint)")!
+        let expectedURL = URL(string: "\(config.APIHost)/v\(config.APIVersion)/\(endpoint)")!
         
-        XCTAssertEqual(expectedURL, request.URL!)
+        XCTAssertEqual(expectedURL, request.url!)
     }
     
     // MARK: parameters
@@ -58,10 +60,10 @@ class JSONURLRequestTests: XCTestCase {
     func test_parameters_setHTTPBody() {
         let parameters = ["email_address" : "test@example.com"]
         
-        request.parameters = parameters
+        request.parameters = parameters as [String : AnyObject]
         
-        let expectedHTTPBody = try! NSJSONSerialization.dataWithJSONObject(parameters, options: NSJSONWritingOptions(rawValue: 0))
+        let expectedHTTPBody = try! JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions(rawValue: 0))
         
-        XCTAssertEqual(expectedHTTPBody, request.HTTPBody)
+        XCTAssertEqual(expectedHTTPBody, request.httpBody)
     }
 }

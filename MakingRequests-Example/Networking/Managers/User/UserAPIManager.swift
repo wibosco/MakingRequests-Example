@@ -10,26 +10,26 @@ import UIKit
 
 class UserAPIManager: NSObject {
 
-    typealias CompletionClosure = (successful: Bool) -> Void
+    typealias CompletionClosure = (_ successful: Bool) -> Void
     
     // MARK: - Profile
     
     class func retrieveProfile(completion: CompletionClosure?) {
-        let session = NSURLSession.sharedSession()
-        let request = UserJSONURLRequest.retrieveProfileRequest()
+        let session = URLSession.shared
+        let request = UserJSONURLRequest.retrieveProfileRequest() as URLRequest
         
-        let task = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+        let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 //Parse response
         }
         
         task.resume()
     }
     
-    class func updateProfile(username: String, emailAddress: String, firstname: String, lastname: String, dateOfBirth: NSDate, completion: CompletionClosure?) {
-        let session = NSURLSession.sharedSession()
-        let request = UserJSONURLRequest.updateProfileRequest(username, emailAddress: emailAddress, firstname: firstname, lastname: lastname, dateOfBirth: dateOfBirth)
+    class func updateProfile(username: String, emailAddress: String, firstname: String, lastname: String, dateOfBirth: Date, completion: CompletionClosure?) {
+        let session = URLSession.shared
+        let request = UserJSONURLRequest.updateProfileRequest(username: username, emailAddress: emailAddress, firstname: firstname, lastname: lastname, dateOfBirth: dateOfBirth) as URLRequest
         
-        let task = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+        let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             //Parse response
         }
         
@@ -39,10 +39,10 @@ class UserAPIManager: NSObject {
     // MARK: - Password
     
     class func requestForgottenPasswordEmailToBeSent(emailAddress: String, completion: CompletionClosure?) {
-        let session = NSURLSession.sharedSession()
-        let request = UserJSONURLRequest.forgottenPasswordEmailToBeSentRequest(emailAddress)
+        let session = URLSession.shared
+        let request = UserJSONURLRequest.forgottenPasswordEmailToBeSentRequest(emailAddress: emailAddress) as URLRequest
         
-        let task = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+        let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             //Parse response
         }
         
@@ -52,10 +52,10 @@ class UserAPIManager: NSObject {
     // MARK: - Block
     
     class func blockUser(userID: String, completion: CompletionClosure?) {
-        let session = NSURLSession.sharedSession()
-        let request = UserJSONURLRequest.blockUserRequest(userID)
+        let session = URLSession.shared
+        let request = UserJSONURLRequest.blockUserRequest(userID: userID) as URLRequest
         
-        let task = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+        let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             //Parse response
         }
         
@@ -63,10 +63,10 @@ class UserAPIManager: NSObject {
     }
     
     class func unblockUser(userID: String, completion: CompletionClosure?) {
-        let session = NSURLSession.sharedSession()
-        let request = UserJSONURLRequest.unblockUserRequest(userID)
+        let session = URLSession.shared
+        let request = UserJSONURLRequest.unblockUserRequest(userID: userID) as URLRequest
         
-        let task = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+        let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             //Parse response
         }
         

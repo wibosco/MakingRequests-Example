@@ -40,11 +40,11 @@ class RequestConfig: NSObject {
         return APIVersion!
     }()
     
-    lazy var timeInterval: NSTimeInterval = {
+    lazy var timeInterval: TimeInterval = {
         return 45
     }()
     
-    lazy var cachePolicy: NSURLRequestCachePolicy = {
-        return .UseProtocolCachePolicy
+    lazy var cachePolicy: NSURLRequest.CachePolicy = {
+        return .useProtocolCachePolicy
     }()
 }

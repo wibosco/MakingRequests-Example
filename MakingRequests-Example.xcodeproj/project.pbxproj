@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43E253D82F5707CA004BB1EE /* JSONURLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E253D52F5707CA004BB1EE /* JSONURLRequestTests.swift */; };
+		43E253D92F5707CA004BB1EE /* UserJSONURLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E253D62F5707CA004BB1EE /* UserJSONURLRequestTests.swift */; };
 		9101FBF71D8EA89B00C10E0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101FBED1D8EA89B00C10E0E /* AppDelegate.swift */; };
 		9101FBF91D8EA89B00C10E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9101FBF01D8EA89B00C10E0E /* Assets.xcassets */; };
 		9101FBFA1D8EA89B00C10E0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101FBF11D8EA89B00C10E0E /* LaunchScreen.storyboard */; };
@@ -16,12 +18,10 @@
 		9101FC061D8ED2DE00C10E0E /* RequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101FC051D8ED2DE00C10E0E /* RequestConfig.swift */; };
 		9101FC0B1D8EEA6100C10E0E /* UserJSONURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101FC0A1D8EEA6100C10E0E /* UserJSONURLRequest.swift */; };
 		9101FC0F1D8EEF1C00C10E0E /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101FC0E1D8EEF1C00C10E0E /* UserAPIManager.swift */; };
-		9101FC111D8F4EB100C10E0E /* JSONURLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101FC101D8F4EB100C10E0E /* JSONURLRequestTests.swift */; };
 		9101FC141D8F506E00C10E0E /* JSONURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101FC011D8EA9BD00C10E0E /* JSONURLRequest.swift */; };
 		9101FC151D8F507100C10E0E /* RequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101FC051D8ED2DE00C10E0E /* RequestConfig.swift */; };
 		9101FC161D8F507400C10E0E /* UserJSONURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101FC0A1D8EEA6100C10E0E /* UserJSONURLRequest.swift */; };
 		9101FC171D8F507600C10E0E /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101FC0E1D8EEF1C00C10E0E /* UserAPIManager.swift */; };
-		9187E5361D958BF7007C5965 /* UserJSONURLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9187E5351D958BF7007C5965 /* UserJSONURLRequestTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43E253D52F5707CA004BB1EE /* JSONURLRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONURLRequestTests.swift; sourceTree = "<group>"; };
+		43E253D62F5707CA004BB1EE /* UserJSONURLRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJSONURLRequestTests.swift; sourceTree = "<group>"; };
 		9101FBC91D8EA84F00C10E0E /* MakingRequests-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MakingRequests-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9101FBDD1D8EA84F00C10E0E /* MakingRequests-ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MakingRequests-ExampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9101FBE31D8EA84F00C10E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,8 +50,6 @@
 		9101FC051D8ED2DE00C10E0E /* RequestConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestConfig.swift; sourceTree = "<group>"; };
 		9101FC0A1D8EEA6100C10E0E /* UserJSONURLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserJSONURLRequest.swift; sourceTree = "<group>"; };
 		9101FC0E1D8EEF1C00C10E0E /* UserAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIManager.swift; sourceTree = "<group>"; };
-		9101FC101D8F4EB100C10E0E /* JSONURLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONURLRequestTests.swift; sourceTree = "<group>"; };
-		9187E5351D958BF7007C5965 /* UserJSONURLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserJSONURLRequestTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43E253D72F5707CA004BB1EE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				43E253D52F5707CA004BB1EE /* JSONURLRequestTests.swift */,
+				43E253D62F5707CA004BB1EE /* UserJSONURLRequestTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		9101FBC01D8EA84F00C10E0E = {
 			isa = PBXGroup;
 			children = (
@@ -102,9 +111,8 @@
 		9101FBE01D8EA84F00C10E0E /* MakingRequests-ExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				43E253D72F5707CA004BB1EE /* Tests */,
 				9101FBE31D8EA84F00C10E0E /* Info.plist */,
-				9101FC101D8F4EB100C10E0E /* JSONURLRequestTests.swift */,
-				9187E5351D958BF7007C5965 /* UserJSONURLRequestTests.swift */,
 			);
 			path = "MakingRequests-ExampleTests";
 			sourceTree = "<group>";
@@ -231,8 +239,9 @@
 		9101FBC11D8EA84F00C10E0E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 2620;
 				ORGANIZATIONNAME = Boles;
 				TargetAttributes = {
 					9101FBC81D8EA84F00C10E0E = {
@@ -246,7 +255,7 @@
 			};
 			buildConfigurationList = 9101FBC41D8EA84F00C10E0E /* Build configuration list for PBXProject "MakingRequests-Example" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -301,11 +310,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43E253D82F5707CA004BB1EE /* JSONURLRequestTests.swift in Sources */,
+				43E253D92F5707CA004BB1EE /* UserJSONURLRequestTests.swift in Sources */,
 				9101FC161D8F507400C10E0E /* UserJSONURLRequest.swift in Sources */,
-				9101FC111D8F4EB100C10E0E /* JSONURLRequestTests.swift in Sources */,
 				9101FC141D8F506E00C10E0E /* JSONURLRequest.swift in Sources */,
 				9101FC151D8F507100C10E0E /* RequestConfig.swift in Sources */,
-				9187E5361D958BF7007C5965 /* UserJSONURLRequestTests.swift in Sources */,
 				9101FC171D8F507600C10E0E /* UserAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,18 +353,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -363,6 +384,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -377,12 +399,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -391,18 +415,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -410,6 +446,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -418,10 +455,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -432,10 +472,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "MakingRequests-Example/Application/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "boles.MakingRequests-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -444,10 +493,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "MakingRequests-Example/Application/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "boles.MakingRequests-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -456,9 +514,19 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "MakingRequests-ExampleTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "boles.MakingRequests-ExampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MakingRequests-Example.app/MakingRequests-Example";
 			};
 			name = Debug;
@@ -468,9 +536,19 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "MakingRequests-ExampleTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "boles.MakingRequests-ExampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MakingRequests-Example.app/MakingRequests-Example";
 			};
 			name = Release;
