@@ -29,10 +29,10 @@ struct DevelopmentEnvironmentConfiguration: EnvironmentConfiguration {
     }()
     
     let cachePolicy: URLRequest.CachePolicy = {
-        return .reloadIgnoringLocalCacheData // Don't cache in development
+        return .reloadIgnoringLocalCacheData
     }()
     
     let timeoutInterval: TimeInterval = {
-        return 120 // Longer timeout for debugging
+        return 120
     }()
 }
