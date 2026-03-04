@@ -23,6 +23,7 @@ final class URLRequestBuilder {
     private var body: (any Encodable)?
     private var cachePolicy: URLRequest.CachePolicy
     private var timeoutInterval: TimeInterval
+    
     private var hasBuilt = false
     
     // MARK: - Init
@@ -87,7 +88,10 @@ final class URLRequestBuilder {
     // MARK: - Build
     
     func build() throws -> URLRequest {
-        precondition(!hasBuilt, "URLRequestBuilder.build() must only be called once. Create a new builder for each request.")
+        guard !hasBuilt else {
+            preconditionFailure("Builder.build() must only be called once. Create a new builder for each request.")
+        }
+        
         hasBuilt = true
         
         guard let url = components.url else {
