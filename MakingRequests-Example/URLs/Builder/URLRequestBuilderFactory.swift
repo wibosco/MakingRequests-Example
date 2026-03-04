@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol URLBuildingFactory {
+protocol URLRequestBuildingFactory {
     func createBuilder(for environment: Environment) -> URLRequestBuilder
 }
 
-extension URLBuildingFactory {
+extension URLRequestBuildingFactory {
     func createBuilder() -> URLRequestBuilder {
         createBuilder(for: .current)
     }
 }
 
-struct URLBuilderFactory: URLBuildingFactory {
+struct URLRequestBuilderFactory: URLRequestBuildingFactory {
     func createBuilder(for environment: Environment = .current) -> URLRequestBuilder {
         switch environment {
         case .development:

@@ -9,11 +9,11 @@
 import Foundation
 
 struct UserRequestFactory {
-    private let urlBuilderFactory: URLBuildingFactory
+    private let urlBuilderFactory: URLRequestBuildingFactory
     
     // MARK: - Init
     
-    init(urlBuilderFactory: URLBuildingFactory = URLBuilderFactory()) {
+    init(urlBuilderFactory: URLRequestBuildingFactory = URLRequestBuilderFactory()) {
         self.urlBuilderFactory = urlBuilderFactory
     }
     

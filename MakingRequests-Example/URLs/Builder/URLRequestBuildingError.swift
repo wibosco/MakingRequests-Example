@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum URLBuildingError: Error {
+enum URLRequestBuildingError: Error {
     case urlInvalid
     case bodyEncodingFailed(Error)
 }

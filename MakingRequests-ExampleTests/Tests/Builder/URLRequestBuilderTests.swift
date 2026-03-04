@@ -119,7 +119,7 @@ class URLRequestBuilderTests: XCTestCase {
         let sut = URLRequestBuilder(configuration: configuration)
 
         XCTAssertThrowsError(try sut.path("@_invalidPath_@").build()) { error in
-            guard case .urlInvalid = error as? URLBuildingError else {
+            guard case .urlInvalid = error as? URLRequestBuildingError else {
                 XCTFail("Expected urlInvalid, got \(error)")
                 return
             }
@@ -131,7 +131,7 @@ class URLRequestBuilderTests: XCTestCase {
         let sut = URLRequestBuilder(configuration: configuration)
 
         XCTAssertThrowsError(try sut.body(TestInvalidCodable()).build()) { error in
-            guard case .bodyEncodingFailed = error as? URLBuildingError else {
+            guard case .bodyEncodingFailed = error as? URLRequestBuildingError else {
                 XCTFail("Expected bodyEncodingFailed, got \(error)")
                 return
             }

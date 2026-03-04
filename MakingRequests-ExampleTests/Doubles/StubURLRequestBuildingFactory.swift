@@ -10,7 +10,7 @@ import Foundation
 
 @testable import MakingRequests_Example
 
-final class StubURLBuildingFactory: URLBuildingFactory {
+final class StubURLRequestBuildingFactory: URLRequestBuildingFactory {
     enum Event: Equatable {
         case createBuilder(Environment)
     }

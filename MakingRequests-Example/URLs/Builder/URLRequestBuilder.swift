@@ -95,7 +95,7 @@ final class URLRequestBuilder {
         hasBuilt = true
         
         guard let url = components.url else {
-            throw URLBuildingError.urlInvalid
+            throw URLRequestBuildingError.urlInvalid
         }
         
         var request = URLRequest(url: url,
@@ -109,7 +109,7 @@ final class URLRequestBuilder {
             do {
                 request.httpBody = try JSONEncoder().encode(body)
             } catch {
-                throw URLBuildingError.bodyEncodingFailed(error)
+                throw URLRequestBuildingError.bodyEncodingFailed(error)
             }
         }
         
