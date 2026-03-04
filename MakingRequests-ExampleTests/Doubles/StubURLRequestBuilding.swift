@@ -11,10 +11,10 @@ import Foundation
 @testable import MakingRequests_Example
 
 final class StubURLRequestBuilding: URLRequestBuilding {
-    enum Event {
+    enum Event: Equatable {
         case path(String)
         case method(HTTPMethod)
-        case body(any Encodable)
+        case body(Data)
         case queryItems([URLQueryItem])
         case header(String, String)
         case headers([String: String])
@@ -39,8 +39,9 @@ final class StubURLRequestBuilding: URLRequestBuilding {
         return self
     }
     
-    func body(_ body: any Encodable) -> Self {
-        events.append(.body(body))
+    func body<T: Encodable>(_ body: T) -> Self {
+        let data = try! JSONEncoder().encode(body)
+        events.append(.body(data))
             
         return self
     }

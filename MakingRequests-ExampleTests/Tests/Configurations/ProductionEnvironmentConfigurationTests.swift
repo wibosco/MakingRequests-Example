@@ -34,17 +34,7 @@ class ProductionEnvironmentConfigurationTests: XCTestCase {
     }
     
     func test_givenConfiguration_thenHeadersIsCorrect() {
-        let info = Bundle.main.infoDictionary
-        
-        let app = info?["CFBundleName"] as? String ?? "Unknown"
-        let version = info?["CFBundleShortVersionString"] as? String ?? "0"
-        let build = info?["CFBundleVersion"] as? String ?? "0"
-        let bundleID = Bundle.main.bundleIdentifier ?? "unknown"
-        let os = ProcessInfo.processInfo.operatingSystemVersion
-        let osVersion = "\(os.majorVersion).\(os.minorVersion).\(os.patchVersion)"
-        
         XCTAssertEqual(sut.headers, ["Accept": "application/json",
-                                     "User-Agent": "\(app)/\(version) (\(bundleID); build:\(build); iOS \(osVersion))",
                                      "Content-Type": "application/json"])
     }
     

@@ -19,7 +19,7 @@ enum HTTPMethod: String, Equatable {
 protocol URLRequestBuilding {
     func path(_ path: String) -> Self
     func method(_ method: HTTPMethod) -> Self
-    func body(_ body: Encodable) -> Self
+    func body<T: Encodable>(_ body: T) -> Self
     func queryItems(_ queryItems: [URLQueryItem]) -> Self
     func header(key: String, value: String) -> Self
     func headers(_ headers: [String: String]) -> Self
@@ -59,7 +59,7 @@ final class URLRequestBuilder: URLRequestBuilding {
         return self
     }
     
-    func body(_ body: Encodable) -> Self {
+    func body<T: Encodable>(_ body: T) -> Self {
         self.body = body
         
         return self

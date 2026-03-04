@@ -45,24 +45,10 @@ class UserRequestFactoryTests: XCTestCase {
         
         XCTAssertEqual(request, requestToReturn)
         
-        XCTAssertEqual(urlRequestBuilder.events.count, 3)
-        
-        guard case let .path(path) = urlRequestBuilder.events[0] else {
-            XCTFail("Unexpected event: \(urlRequestBuilder.events[0])")
-            return
-        }
-        XCTAssertEqual(path, "/v3/user")
-        
-        guard case let .method(method) = urlRequestBuilder.events[1] else {
-            XCTFail("Unexpected event: \(urlRequestBuilder.events[1])")
-            return
-        }
-        XCTAssertEqual(method, .GET)
-        
-        guard case .build = urlRequestBuilder.events[2] else {
-            XCTFail("Unexpected event: \(urlRequestBuilder.events[2])")
-            return
-        }
+        XCTAssertEqual(urlRequestBuilder.events, [
+            .path("/v3/user"),
+            .method(.GET),
+            .build])
     }
     
     func test_givenRequestFactory_whenCreateUserPOSTRequestIsCalled_thenValuesOnURLRequestAreCorrectlySet() throws {
@@ -75,29 +61,10 @@ class UserRequestFactoryTests: XCTestCase {
         
         XCTAssertEqual(request, requestToReturn)
         
-        XCTAssertEqual(urlRequestBuilder.events.count, 4)
-        
-        guard case let .path(path) = urlRequestBuilder.events[0] else {
-            XCTFail("Unexpected event: \(urlRequestBuilder.events[0])")
-            return
-        }
-        XCTAssertEqual(path, "/v3/user")
-        
-        guard case let .method(method) = urlRequestBuilder.events[1] else {
-            XCTFail("Unexpected event: \(urlRequestBuilder.events[1])")
-            return
-        }
-        XCTAssertEqual(method, .POST)
-        
-        guard case let .body(bodyPassedIn) = urlRequestBuilder.events[2] else {
-            XCTFail("Unexpected event: \(urlRequestBuilder.events[2])")
-            return
-        }
-        XCTAssertEqual(bodyPassedIn as? TestValidCodable, body)
-        
-        guard case .build = urlRequestBuilder.events[3] else {
-            XCTFail("Unexpected event: \(urlRequestBuilder.events[3])")
-            return
-        }
+        XCTAssertEqual(urlRequestBuilder.events, [
+            .path("/v3/user"),
+            .method(.POST),
+            .body(try JSONEncoder().encode(body)),
+            .build])
     }
 }

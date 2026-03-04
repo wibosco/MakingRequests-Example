@@ -34,15 +34,8 @@ class DevelopmentEnvironmentConfigurationTests: XCTestCase {
     }
     
     func test_givenConfiguration_thenHeadersIsCorrect() {
-        let info = Bundle.main.infoDictionary
-        
-        let app = info?["CFBundleName"] as? String ?? "Unknown"
-        let version = info?["CFBundleShortVersionString"] as? String ?? "0"
-        let build = info?["CFBundleVersion"] as? String ?? "0"
-        
         XCTAssertEqual(sut.headers, ["X-Environment": "development",
                                      "Accept": "application/json",
-                                     "User-Agent": "\(app)/\(version) (build:\(build); development)",
                                      "Content-Type": "application/json"])
     }
     

@@ -21,13 +21,6 @@ struct DevelopmentEnvironmentConfiguration: EnvironmentConfiguration {
     let headers: [String: String] = {
         var headers = [String: String]()
         
-        let info = Bundle.main.infoDictionary
-        
-        let app = info?["CFBundleName"] as? String ?? "Unknown"
-        let version = info?["CFBundleShortVersionString"] as? String ?? "0"
-        let build = info?["CFBundleVersion"] as? String ?? "0"
-        
-        headers["User-Agent"] = "\(app)/\(version) (build:\(build); development)"
         headers["Content-Type"] = "application/json"
         headers["Accept"] = "application/json"
         headers["X-Environment"] = "development"

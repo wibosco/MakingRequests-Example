@@ -20,13 +20,6 @@ struct StagingEnvironmentConfiguration: EnvironmentConfiguration {
     let headers: [String: String] = {
         var headers = [String: String]()
         
-        let info = Bundle.main.infoDictionary
-        
-        let app = info?["CFBundleName"] as? String ?? "Unknown"
-        let version = info?["CFBundleShortVersionString"] as? String ?? "0"
-        let build = info?["CFBundleVersion"] as? String ?? "0"
-        
-        headers["User-Agent"] = "\(app)/\(version) (build:\(build); staging)"
         headers["Content-Type"] = "application/json"
         headers["Accept"] = "application/json"
         headers["X-Environment"] = "staging"
@@ -41,16 +34,4 @@ struct StagingEnvironmentConfiguration: EnvironmentConfiguration {
     let timeoutInterval: TimeInterval = {
         return 60
     }()
-    
-    // MARK: - Helpers
-    
-    private func userAgent() -> String {
-        let info = Bundle.main.infoDictionary
-        
-        let app = info?["CFBundleName"] as? String ?? "Unknown"
-        let version = info?["CFBundleShortVersionString"] as? String ?? "0"
-        let build = info?["CFBundleVersion"] as? String ?? "0"
-        
-        return "\(app)/\(version) (build:\(build); staging)"
-    }
 }

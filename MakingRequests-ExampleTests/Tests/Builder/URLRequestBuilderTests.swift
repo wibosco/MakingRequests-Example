@@ -74,7 +74,7 @@ class URLRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.allHTTPHeaderFields, ["header_A": "value_A", "header_B": "value_C"])
     }
     
-    func test_givenAValidConfiguration_andCachePolicyIsUpdated_whenRequestIsBuilt_thenDefaultsAreUsed() throws {
+    func test_givenAValidConfiguration_andCachePolicyIsUpdated_whenRequestIsBuilt_thenNewCachePolicyIsUsed() throws {
         let configuration = StubConfiguration(cachePolicy: .reloadIgnoringCacheData)
         let sut = URLRequestBuilder(configuration: configuration)
         
@@ -83,7 +83,7 @@ class URLRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.cachePolicy, .reloadIgnoringLocalAndRemoteCacheData)
     }
     
-    func test_givenAValidConfiguration_andTimeoutIntervalIsUpdated_whenRequestIsBuilt_thenDefaultsAreUsed() throws {
+    func test_givenAValidConfiguration_andTimeoutIntervalIsUpdated_whenRequestIsBuilt_thenNewTimeoutIntervalIsUsed() throws {
         let configuration = StubConfiguration(timeoutInterval: 150)
         let sut = URLRequestBuilder(configuration: configuration)
         
@@ -92,7 +92,7 @@ class URLRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.timeoutInterval, 2000)
     }
     
-    func test_givenAValidConfiguration_andQueryItemsAreAdded_whenRequestIsBuilt_thenDefaultsAreUsed() throws {
+    func test_givenAValidConfiguration_andQueryItemsAreAdded_whenRequestIsBuilt_thenQueryItemsAreUsed() throws {
         let configuration = StubConfiguration()
         let sut = URLRequestBuilder(configuration: configuration)
         
@@ -103,7 +103,7 @@ class URLRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.url?.absoluteString, "http://williamboles.com/making-a-request-with-a-side-of-testing/?item_A=value_A&item_B=value_B")
     }
     
-    func test_givenAValidConfiguration_andBodyIsAdded_whenRequestIsBuilt_thenDefaultsAreUsed() throws {
+    func test_givenAValidConfiguration_andBodyIsAdded_whenRequestIsBuilt_thenBodyIsUsed() throws {
         let configuration = StubConfiguration()
         let sut = URLRequestBuilder(configuration: configuration)
         
@@ -114,19 +114,25 @@ class URLRequestBuilderTests: XCTestCase {
         XCTAssertEqual(request.httpBody, try JSONEncoder().encode(TestValidCodable()))
     }
     
+    func test_givenAnInvalidPath_whenRequestIsBuilt_thenAnErrorIsThrown() throws {
+        let configuration = StubConfiguration()
+        let sut = URLRequestBuilder(configuration: configuration)
+
+        XCTAssertThrowsError(try sut.path("@_invalidPath_@").build()) { error in
+            guard case .urlInvalid = error as? URLBuildingError else {
+                XCTFail("Expected urlInvalid, got \(error)")
+                return
+            }
+        }
+    }
+    
     func test_givenAnInvalidBody_whenRequestIsBuilt_thenAnErrorIsThrown() throws {
         let configuration = StubConfiguration()
         let sut = URLRequestBuilder(configuration: configuration)
-        
-        do {
-            _ = try sut
-                .body(TestInvalidCodable())
-                .build()
-            
-            XCTFail("Error should be thrown")
-        } catch {
+
+        XCTAssertThrowsError(try sut.body(TestInvalidCodable()).build()) { error in
             guard case .bodyEncodingFailed = error as? URLBuildingError else {
-                XCTFail("Unexpected error")
+                XCTFail("Expected bodyEncodingFailed, got \(error)")
                 return
             }
         }
