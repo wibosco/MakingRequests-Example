@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class FeedRequestFactory {
+struct FeedRequestFactory {
     enum FeedOrder: String, Equatable {
         case ascending
         case descending
@@ -22,16 +22,14 @@ final class FeedRequestFactory {
         self.urlBuilderFactory = urlBuilderFactory
     }
     
-    // MARK: - Request
+    // MARK: - Requests
     
     func createFeedGetRequest(order: FeedOrder = .ascending) throws -> URLRequest {
         let queryItems = [
             URLQueryItem(name: "order", value: order.rawValue)
         ]
         
-        let urlBuilder = urlBuilderFactory.createBuilder()
-        
-        return try urlBuilder
+        return try urlBuilderFactory.createBuilder()
             .path("/v2/feed")
             .method(.GET)
             .queryItems(queryItems)

@@ -9,17 +9,17 @@
 import Foundation
 
 protocol URLBuildingFactory {
-    func createBuilder(for environment: Environment) -> URLRequestBuilding
+    func createBuilder(for environment: Environment) -> URLRequestBuilder
 }
 
 extension URLBuildingFactory {
-    func createBuilder() -> URLRequestBuilding {
+    func createBuilder() -> URLRequestBuilder {
         createBuilder(for: .current)
     }
 }
 
 struct URLBuilderFactory: URLBuildingFactory {
-    func createBuilder(for environment: Environment = .current) -> URLRequestBuilding {
+    func createBuilder(for environment: Environment = .current) -> URLRequestBuilder {
         switch environment {
         case .development:
             return URLRequestBuilder(configuration: DevelopmentEnvironmentConfiguration())

@@ -17,9 +17,9 @@ final class StubURLBuildingFactory: URLBuildingFactory {
     
     private(set) var events = [Event]()
     
-    var urlBuilderToReturn: URLRequestBuilding!
+    var urlBuilderToReturn: URLRequestBuilder!
     
-    func createBuilder(for environment: Environment) -> URLRequestBuilding {
+    func createBuilder(for environment: Environment) -> URLRequestBuilder {
         events.append(.createBuilder(environment))
         
         return urlBuilderToReturn

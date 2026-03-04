@@ -11,8 +11,6 @@ import XCTest
 @testable import MakingRequests_Example
 
 class UserRequestFactoryTests: XCTestCase {
-    var urlRequestBuilder: StubURLRequestBuilding!
-    var urlBuilderFactory: StubURLBuildingFactory!
     var sut: UserRequestFactory!
     
     // MARK: - Lifecycle
@@ -20,16 +18,12 @@ class UserRequestFactoryTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        urlRequestBuilder = StubURLRequestBuilding()
-        urlBuilderFactory = StubURLBuildingFactory()
-        urlBuilderFactory.urlBuilderToReturn = urlRequestBuilder
-        
+        let urlBuilderFactory = StubURLBuildingFactory()
+        urlBuilderFactory.urlBuilderToReturn = URLRequestBuilder(configuration: StubConfiguration())
         sut = UserRequestFactory(urlBuilderFactory: urlBuilderFactory)
     }
     
     override func tearDown() {
-        urlRequestBuilder = nil
-        urlBuilderFactory = nil
         sut = nil
         
         super.tearDown()
@@ -37,34 +31,21 @@ class UserRequestFactoryTests: XCTestCase {
     
     // MARK: - Tests
     
-    func test_givenRequestFactory_whenCreateUserGETRequestIsCalled_thenValuesOnURLRequestAreCorrectlySet() throws {
-        let requestToReturn = URLRequest(url: URL(string: "https://williamboles.com")!)
-        urlRequestBuilder.urlRequestToReturn = requestToReturn
-        
+    func test_givenRequestFactory_whenCreateUserGETRequestIsCalled_thenURLRequestIsCorrectlyBuilt() throws {
         let request = try sut.createUserGETRequest()
         
-        XCTAssertEqual(request, requestToReturn)
-        
-        XCTAssertEqual(urlRequestBuilder.events, [
-            .path("/v3/user"),
-            .method(.GET),
-            .build])
+        XCTAssertEqual(request.url?.path, "/v3/user")
+        XCTAssertEqual(request.httpMethod, "GET")
+        XCTAssertNil(request.httpBody)
     }
     
-    func test_givenRequestFactory_whenCreateUserPOSTRequestIsCalled_thenValuesOnURLRequestAreCorrectlySet() throws {
-        let requestToReturn = URLRequest(url: URL(string: "https://williamboles.com")!)
-        urlRequestBuilder.urlRequestToReturn = requestToReturn
-        
+    func test_givenRequestFactory_whenCreateUserPOSTRequestIsCalled_thenURLRequestIsCorrectlyBuilt() throws {
         let body = TestValidCodable()
         
         let request = try sut.createUserPOSTRequest(body: body)
         
-        XCTAssertEqual(request, requestToReturn)
-        
-        XCTAssertEqual(urlRequestBuilder.events, [
-            .path("/v3/user"),
-            .method(.POST),
-            .body(try JSONEncoder().encode(body)),
-            .build])
+        XCTAssertEqual(request.url?.path, "/v3/user")
+        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(request.httpBody, try JSONEncoder().encode(body))
     }
 }

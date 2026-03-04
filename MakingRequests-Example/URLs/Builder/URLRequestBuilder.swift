@@ -16,25 +16,14 @@ enum HTTPMethod: String, Equatable {
     case PATCH
 }
 
-protocol URLRequestBuilding {
-    func path(_ path: String) -> Self
-    func method(_ method: HTTPMethod) -> Self
-    func body<T: Encodable>(_ body: T) -> Self
-    func queryItems(_ queryItems: [URLQueryItem]) -> Self
-    func header(key: String, value: String) -> Self
-    func headers(_ headers: [String: String]) -> Self
-    func cachePolicy(_ cachePolicy: URLRequest.CachePolicy) -> Self
-    func timeoutInterval(_ timeoutInterval: TimeInterval) -> Self
-    func build() throws -> URLRequest
-}
-
-final class URLRequestBuilder: URLRequestBuilding {
+final class URLRequestBuilder {
     private var components: URLComponents
     private var method: HTTPMethod = .GET
     private var headers: [String: String]
-    private var body: Encodable?
+    private var body: (any Encodable)?
     private var cachePolicy: URLRequest.CachePolicy
     private var timeoutInterval: TimeInterval
+    private var hasBuilt = false
     
     // MARK: - Init
     
@@ -45,7 +34,7 @@ final class URLRequestBuilder: URLRequestBuilding {
         self.timeoutInterval = configuration.timeoutInterval
     }
     
-    // MARK: - Parts
+    // MARK: - Configuration
     
     func path(_ path: String) -> Self {
         components.path = path
@@ -67,11 +56,13 @@ final class URLRequestBuilder: URLRequestBuilding {
     
     func queryItems(_ queryItems: [URLQueryItem]) -> Self {
         components.queryItems = queryItems.isEmpty ? nil : queryItems
+        
         return self
     }
     
     func header(key: String, value: String) -> Self {
         headers[key] = value
+        
         return self
     }
     
@@ -96,6 +87,9 @@ final class URLRequestBuilder: URLRequestBuilding {
     // MARK: - Build
     
     func build() throws -> URLRequest {
+        precondition(!hasBuilt, "URLRequestBuilder.build() must only be called once. Create a new builder for each request.")
+        hasBuilt = true
+        
         guard let url = components.url else {
             throw URLBuildingError.urlInvalid
         }
@@ -103,10 +97,11 @@ final class URLRequestBuilder: URLRequestBuilding {
         var request = URLRequest(url: url,
                                  cachePolicy: cachePolicy,
                                  timeoutInterval: timeoutInterval)
-        request.allHTTPHeaderFields = headers
-        request.httpMethod = method.rawValue
         
-        if let body = body {
+        request.httpMethod = method.rawValue
+        request.allHTTPHeaderFields = headers
+        
+        if let body {
             do {
                 request.httpBody = try JSONEncoder().encode(body)
             } catch {

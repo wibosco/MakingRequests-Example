@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class UserRequestFactory {
+struct UserRequestFactory {
     private let urlBuilderFactory: URLBuildingFactory
     
     // MARK: - Init
@@ -17,19 +17,17 @@ final class UserRequestFactory {
         self.urlBuilderFactory = urlBuilderFactory
     }
     
+    // MARK: - Requests
+    
     func createUserGETRequest() throws -> URLRequest {
-        let urlBuilder = urlBuilderFactory.createBuilder()
-        
-        return try urlBuilder
+        return try urlBuilderFactory.createBuilder()
             .path("/v3/user")
             .method(.GET)
             .build()
     }
     
-    func createUserPOSTRequest(body: Encodable) throws -> URLRequest {
-        let urlBuilder = urlBuilderFactory.createBuilder()
-        
-        return try urlBuilder
+    func createUserPOSTRequest(body: some Encodable) throws -> URLRequest {
+        return try urlBuilderFactory.createBuilder()
             .path("/v3/user")
             .method(.POST)
             .body(body)
