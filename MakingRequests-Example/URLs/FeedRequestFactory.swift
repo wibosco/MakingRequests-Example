@@ -14,12 +14,12 @@ struct FeedRequestFactory {
         case descending
     }
     
-    private let urlBuilderFactory: URLRequestBuildingFactory
+    private let urlRequestBuilderFactory: URLRequestBuildingFactory
     
     // MARK: - Init
     
     init(urlBuilderFactory: URLRequestBuildingFactory = URLRequestBuilderFactory()) {
-        self.urlBuilderFactory = urlBuilderFactory
+        self.urlRequestBuilderFactory = urlBuilderFactory
     }
     
     // MARK: - Requests
@@ -29,7 +29,7 @@ struct FeedRequestFactory {
             URLQueryItem(name: "order", value: order.rawValue)
         ]
         
-        return try urlBuilderFactory.createBuilder()
+        return try urlRequestBuilderFactory.createBuilder()
             .path("/v2/feed")
             .method(.GET)
             .queryItems(queryItems)

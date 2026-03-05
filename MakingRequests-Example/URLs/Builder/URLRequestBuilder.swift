@@ -17,6 +17,8 @@ enum HTTPMethod: String, Equatable {
 }
 
 final class URLRequestBuilder {
+    let configuration: EnvironmentConfiguration
+    
     private var components: URLComponents
     private var method: HTTPMethod = .GET
     private var headers: [String: String]
@@ -29,6 +31,8 @@ final class URLRequestBuilder {
     // MARK: - Init
     
     init(configuration: EnvironmentConfiguration) {
+        self.configuration = configuration
+        
         self.components = configuration.urlComponents
         self.headers = configuration.headers
         self.cachePolicy = configuration.cachePolicy

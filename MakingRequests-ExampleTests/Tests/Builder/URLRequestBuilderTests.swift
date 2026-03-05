@@ -33,7 +33,9 @@ class URLRequestBuilderTests: XCTestCase {
         let configuration = StubConfiguration(urlComponents: URLComponents(string: "http://williamboles.com/making-a-request-with-a-side-of-testing/")!)
         let sut = URLRequestBuilder(configuration: configuration)
         
-        let request = try sut.path("/v4/test_path/").build()
+        let request = try sut
+            .path("/v4/test_path/")
+            .build()
         
         XCTAssertEqual(request.url?.absoluteString, "http://williamboles.com/v4/test_path/")
     }
@@ -42,7 +44,9 @@ class URLRequestBuilderTests: XCTestCase {
         let configuration = StubConfiguration(headers: ["header_A": "value_A", "header_B": "value_B"])
         let sut = URLRequestBuilder(configuration: configuration)
         
-        let request = try sut.header(key: "header_C", value: "value_C").build()
+        let request = try sut
+            .header(key: "header_C", value: "value_C")
+            .build()
         
         XCTAssertEqual(request.allHTTPHeaderFields, ["header_A": "value_A", "header_B": "value_B", "header_C": "value_C"])
     }
@@ -51,7 +55,9 @@ class URLRequestBuilderTests: XCTestCase {
         let configuration = StubConfiguration(headers: ["header_A": "value_A", "header_B": "value_B"])
         let sut = URLRequestBuilder(configuration: configuration)
         
-        let request = try sut.header(key: "header_A", value: "value_C").build()
+        let request = try sut
+            .header(key: "header_A", value: "value_C")
+            .build()
         
         XCTAssertEqual(request.allHTTPHeaderFields, ["header_A": "value_C", "header_B": "value_B"])
     }
@@ -60,7 +66,9 @@ class URLRequestBuilderTests: XCTestCase {
         let configuration = StubConfiguration(headers: ["header_A": "value_A", "header_B": "value_B"])
         let sut = URLRequestBuilder(configuration: configuration)
         
-        let request = try sut.headers(["header_C": "value_C", "header_D": "value_D"]).build()
+        let request = try sut
+            .headers(["header_C": "value_C", "header_D": "value_D"])
+            .build()
         
         XCTAssertEqual(request.allHTTPHeaderFields, ["header_A": "value_A", "header_B": "value_B", "header_C": "value_C", "header_D": "value_D"])
     }
@@ -69,7 +77,9 @@ class URLRequestBuilderTests: XCTestCase {
         let configuration = StubConfiguration(headers: ["header_A": "value_A", "header_B": "value_B"])
         let sut = URLRequestBuilder(configuration: configuration)
         
-        let request = try sut.headers(["header_A": "value_A", "header_B": "value_C"]).build()
+        let request = try sut
+            .headers(["header_A": "value_A", "header_B": "value_C"])
+            .build()
         
         XCTAssertEqual(request.allHTTPHeaderFields, ["header_A": "value_A", "header_B": "value_C"])
     }
@@ -78,7 +88,9 @@ class URLRequestBuilderTests: XCTestCase {
         let configuration = StubConfiguration(cachePolicy: .reloadIgnoringCacheData)
         let sut = URLRequestBuilder(configuration: configuration)
         
-        let request = try sut.cachePolicy(.reloadIgnoringLocalAndRemoteCacheData).build()
+        let request = try sut
+            .cachePolicy(.reloadIgnoringLocalAndRemoteCacheData)
+            .build()
         
         XCTAssertEqual(request.cachePolicy, .reloadIgnoringLocalAndRemoteCacheData)
     }
@@ -87,7 +99,9 @@ class URLRequestBuilderTests: XCTestCase {
         let configuration = StubConfiguration(timeoutInterval: 150)
         let sut = URLRequestBuilder(configuration: configuration)
         
-        let request = try sut.timeoutInterval(2000).build()
+        let request = try sut
+            .timeoutInterval(2000)
+            .build()
         
         XCTAssertEqual(request.timeoutInterval, 2000)
     }
@@ -118,7 +132,10 @@ class URLRequestBuilderTests: XCTestCase {
         let configuration = StubConfiguration()
         let sut = URLRequestBuilder(configuration: configuration)
 
-        XCTAssertThrowsError(try sut.path("@_invalidPath_@").build()) { error in
+        XCTAssertThrowsError(try sut
+            .path("@_invalidPath_@")
+            .build())
+        { error in
             guard case .urlInvalid = error as? URLRequestBuildingError else {
                 XCTFail("Expected urlInvalid, got \(error)")
                 return
@@ -130,7 +147,10 @@ class URLRequestBuilderTests: XCTestCase {
         let configuration = StubConfiguration()
         let sut = URLRequestBuilder(configuration: configuration)
 
-        XCTAssertThrowsError(try sut.body(TestInvalidCodable()).build()) { error in
+        XCTAssertThrowsError(try sut
+            .body(TestInvalidCodable())
+            .build())
+        { error in
             guard case .bodyEncodingFailed = error as? URLRequestBuildingError else {
                 XCTFail("Expected bodyEncodingFailed, got \(error)")
                 return

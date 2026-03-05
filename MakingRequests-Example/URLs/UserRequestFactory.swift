@@ -9,25 +9,25 @@
 import Foundation
 
 struct UserRequestFactory {
-    private let urlBuilderFactory: URLRequestBuildingFactory
+    private let urlRequestBuilderFactory: URLRequestBuildingFactory
     
     // MARK: - Init
     
     init(urlBuilderFactory: URLRequestBuildingFactory = URLRequestBuilderFactory()) {
-        self.urlBuilderFactory = urlBuilderFactory
+        self.urlRequestBuilderFactory = urlBuilderFactory
     }
     
     // MARK: - Requests
     
     func createUserGETRequest() throws -> URLRequest {
-        return try urlBuilderFactory.createBuilder()
+        return try urlRequestBuilderFactory.createBuilder()
             .path("/v3/user")
             .method(.GET)
             .build()
     }
     
-    func createUserPOSTRequest(body: some Encodable) throws -> URLRequest {
-        return try urlBuilderFactory.createBuilder()
+    func createUserPOSTRequest<T: Encodable>(body: T) throws -> URLRequest {
+        return try urlRequestBuilderFactory.createBuilder()
             .path("/v3/user")
             .method(.POST)
             .body(body)
