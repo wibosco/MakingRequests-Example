@@ -10,5 +10,4 @@ import Foundation
 
 enum URLRequestBuildingError: Error {
     case urlInvalid
-    case bodyEncodingFailed(Error)
 }

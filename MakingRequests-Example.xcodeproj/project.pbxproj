@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4353774D2F5862B8009D6754 /* TestInvalidCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353774C2F5862B8009D6754 /* TestInvalidCodable.swift */; };
 		4365B4E22F5A389B0068D989 /* StubURLRequestBuildingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4365B4E12F5A389B0068D989 /* StubURLRequestBuildingFactory.swift */; };
 		4365B4E42F5A3CAD0068D989 /* URLRequestBuilderFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4365B4E32F5A3CAD0068D989 /* URLRequestBuilderFactoryTests.swift */; };
 		43E2541D2F577F47004BB1EE /* StagingEnvironmentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E254172F577F47004BB1EE /* StagingEnvironmentConfiguration.swift */; };
@@ -19,7 +18,6 @@
 		43E254232F577F47004BB1EE /* UserRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E2541A2F577F47004BB1EE /* UserRequestFactory.swift */; };
 		43E254242F577F47004BB1EE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E254102F577F47004BB1EE /* Environment.swift */; };
 		43E254432F578675004BB1EE /* StubConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E254362F578675004BB1EE /* StubConfiguration.swift */; };
-		43E254492F578730004BB1EE /* TestValidCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E254482F578730004BB1EE /* TestValidCodable.swift */; };
 		43E2544B2F578C4A004BB1EE /* EnvironmentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E2544A2F578C4A004BB1EE /* EnvironmentConfiguration.swift */; };
 		43E254512F579172004BB1EE /* DevelopmentEnvironmentConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E2544C2F579172004BB1EE /* DevelopmentEnvironmentConfigurationTests.swift */; };
 		43E254522F579172004BB1EE /* StagingEnvironmentConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E2544F2F579172004BB1EE /* StagingEnvironmentConfigurationTests.swift */; };
@@ -46,7 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4353774C2F5862B8009D6754 /* TestInvalidCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInvalidCodable.swift; sourceTree = "<group>"; };
 		4365B4E12F5A389B0068D989 /* StubURLRequestBuildingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLRequestBuildingFactory.swift; sourceTree = "<group>"; };
 		4365B4E32F5A3CAD0068D989 /* URLRequestBuilderFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilderFactoryTests.swift; sourceTree = "<group>"; };
 		43E254102F577F47004BB1EE /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -58,7 +55,6 @@
 		43E254192F577F47004BB1EE /* FeedRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRequestFactory.swift; sourceTree = "<group>"; };
 		43E2541A2F577F47004BB1EE /* UserRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestFactory.swift; sourceTree = "<group>"; };
 		43E254362F578675004BB1EE /* StubConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubConfiguration.swift; sourceTree = "<group>"; };
-		43E254482F578730004BB1EE /* TestValidCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestValidCodable.swift; sourceTree = "<group>"; };
 		43E2544A2F578C4A004BB1EE /* EnvironmentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentConfiguration.swift; sourceTree = "<group>"; };
 		43E2544C2F579172004BB1EE /* DevelopmentEnvironmentConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentEnvironmentConfigurationTests.swift; sourceTree = "<group>"; };
 		43E2544E2F579172004BB1EE /* ProductionEnvironmentConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionEnvironmentConfigurationTests.swift; sourceTree = "<group>"; };
@@ -133,8 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				43E254362F578675004BB1EE /* StubConfiguration.swift */,
-				43E254482F578730004BB1EE /* TestValidCodable.swift */,
-				4353774C2F5862B8009D6754 /* TestInvalidCodable.swift */,
 				4365B4E12F5A389B0068D989 /* StubURLRequestBuildingFactory.swift */,
 			);
 			path = Doubles;
@@ -369,13 +363,11 @@
 				43E254522F579172004BB1EE /* StagingEnvironmentConfigurationTests.swift in Sources */,
 				4365B4E22F5A389B0068D989 /* StubURLRequestBuildingFactory.swift in Sources */,
 				43E254542F579172004BB1EE /* ProductionEnvironmentConfigurationTests.swift in Sources */,
-				43E254492F578730004BB1EE /* TestValidCodable.swift in Sources */,
 				43E254432F578675004BB1EE /* StubConfiguration.swift in Sources */,
 				43E2545A2F579302004BB1EE /* UserRequestFactoryTests.swift in Sources */,
 				43E2545B2F579302004BB1EE /* URLRequestBuilderTests.swift in Sources */,
 				4365B4E42F5A3CAD0068D989 /* URLRequestBuilderFactoryTests.swift in Sources */,
 				43E2545C2F579302004BB1EE /* FeedRequestFactoryTests.swift in Sources */,
-				4353774D2F5862B8009D6754 /* TestInvalidCodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

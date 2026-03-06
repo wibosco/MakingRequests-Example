@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct User: Codable {
+    let name: String
+}
+
 struct UserRequestFactory {
     private let urlRequestBuilderFactory: URLRequestBuildingFactory
     
@@ -26,7 +30,9 @@ struct UserRequestFactory {
             .build()
     }
     
-    func createUserPOSTRequest<T: Encodable>(body: T) throws -> URLRequest {
+    func createUserPOSTRequest(user: User) throws -> URLRequest {
+        let body = try JSONEncoder().encode(user)
+        
         return try urlRequestBuilderFactory.createBuilder()
             .path("/v3/user")
             .method(.POST)

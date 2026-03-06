@@ -40,12 +40,12 @@ class UserRequestFactoryTests: XCTestCase {
     }
     
     func test_givenRequestFactory_whenCreateUserPOSTRequestIsCalled_thenURLRequestIsCorrectlyBuilt() throws {
-        let body = TestValidCodable()
+        let user = User(name: "test_name")
         
-        let request = try sut.createUserPOSTRequest(body: body)
+        let request = try sut.createUserPOSTRequest(user: user)
         
         XCTAssertEqual(request.url?.path, "/v3/user")
         XCTAssertEqual(request.httpMethod, "POST")
-        XCTAssertEqual(request.httpBody, try JSONEncoder().encode(body))
+        XCTAssertEqual(request.httpBody, try JSONEncoder().encode(user))
     }
 }

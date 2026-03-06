@@ -111,7 +111,8 @@ class URLRequestBuilderTests: XCTestCase {
         let sut = URLRequestBuilder(configuration: configuration)
         
         let request = try sut
-            .queryItems([URLQueryItem(name: "item_A", value: "value_A"), URLQueryItem(name: "item_B", value: "value_B")])
+            .queryItems([URLQueryItem(name: "item_A", value: "value_A"),
+                         URLQueryItem(name: "item_B", value: "value_B")])
             .build()
         
         XCTAssertEqual(request.url?.absoluteString, "http://williamboles.com/making-a-request-with-a-side-of-testing/?item_A=value_A&item_B=value_B")
@@ -121,11 +122,13 @@ class URLRequestBuilderTests: XCTestCase {
         let configuration = StubConfiguration()
         let sut = URLRequestBuilder(configuration: configuration)
         
+        let data = "test_data".data(using: .utf8)!
+        
         let request = try sut
-            .body(TestValidCodable())
+            .body(data)
             .build()
         
-        XCTAssertEqual(request.httpBody, try JSONEncoder().encode(TestValidCodable()))
+        XCTAssertEqual(request.httpBody, data)
     }
     
     func test_givenAnInvalidPath_whenRequestIsBuilt_thenAnErrorIsThrown() throws {
@@ -138,21 +141,6 @@ class URLRequestBuilderTests: XCTestCase {
         { error in
             guard case .urlInvalid = error as? URLRequestBuildingError else {
                 XCTFail("Expected urlInvalid, got \(error)")
-                return
-            }
-        }
-    }
-    
-    func test_givenAnInvalidBody_whenRequestIsBuilt_thenAnErrorIsThrown() throws {
-        let configuration = StubConfiguration()
-        let sut = URLRequestBuilder(configuration: configuration)
-
-        XCTAssertThrowsError(try sut
-            .body(TestInvalidCodable())
-            .build())
-        { error in
-            guard case .bodyEncodingFailed = error as? URLRequestBuildingError else {
-                XCTFail("Expected bodyEncodingFailed, got \(error)")
                 return
             }
         }

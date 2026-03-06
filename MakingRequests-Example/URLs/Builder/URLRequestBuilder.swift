@@ -22,7 +22,7 @@ final class URLRequestBuilder {
     private var components: URLComponents
     private var method: HTTPMethod = .GET
     private var headers: [String: String]
-    private var body: (any Encodable)?
+    private var body: Data?
     private var cachePolicy: URLRequest.CachePolicy
     private var timeoutInterval: TimeInterval
     
@@ -53,7 +53,7 @@ final class URLRequestBuilder {
         return self
     }
     
-    func body<T: Encodable>(_ body: T) -> Self {
+    func body(_ body: Data) -> Self {
         self.body = body
         
         return self
@@ -108,14 +108,7 @@ final class URLRequestBuilder {
         
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
-        
-        if let body {
-            do {
-                request.httpBody = try JSONEncoder().encode(body)
-            } catch {
-                throw URLRequestBuildingError.bodyEncodingFailed(error)
-            }
-        }
+        request.httpBody = body
         
         return request
     }
