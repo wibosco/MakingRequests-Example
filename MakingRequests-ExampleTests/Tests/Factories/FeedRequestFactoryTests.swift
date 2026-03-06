@@ -18,9 +18,9 @@ class FeedRequestFactoryTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let urlBuilderFactory = StubURLRequestBuildingFactory()
-        urlBuilderFactory.urlBuilderToReturn = URLRequestBuilder(configuration: StubConfiguration())
-        sut = FeedRequestFactory(urlBuilderFactory: urlBuilderFactory)
+        let urlRequestBuilderFactory = StubURLRequestBuildingFactory()
+        urlRequestBuilderFactory.urlBuilderToReturn = URLRequestBuilder(configuration: StubConfiguration())
+        sut = FeedRequestFactory(urlRequestBuilderFactory: urlRequestBuilderFactory)
     }
     
     override func tearDown() {

@@ -18,8 +18,8 @@ struct FeedRequestFactory {
     
     // MARK: - Init
     
-    init(urlBuilderFactory: URLRequestBuildingFactory = URLRequestBuilderFactory()) {
-        self.urlRequestBuilderFactory = urlBuilderFactory
+    init(urlRequestBuilderFactory: URLRequestBuildingFactory = URLRequestBuilderFactory()) {
+        self.urlRequestBuilderFactory = urlRequestBuilderFactory
     }
     
     // MARK: - Requests
