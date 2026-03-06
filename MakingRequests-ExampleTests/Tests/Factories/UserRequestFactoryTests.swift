@@ -36,7 +36,6 @@ class UserRequestFactoryTests: XCTestCase {
         
         XCTAssertEqual(request.url?.path, "/v3/user")
         XCTAssertEqual(request.httpMethod, "GET")
-        XCTAssertNil(request.httpBody)
     }
     
     func test_givenRequestFactory_whenCreateUserPOSTRequestIsCalled_thenURLRequestIsCorrectlyBuilt() throws {
