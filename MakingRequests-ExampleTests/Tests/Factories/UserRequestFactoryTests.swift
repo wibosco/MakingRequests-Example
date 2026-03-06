@@ -48,4 +48,20 @@ class UserRequestFactoryTests: XCTestCase {
         XCTAssertEqual(request.httpMethod, "POST")
         XCTAssertEqual(request.httpBody, try JSONEncoder().encode(user))
     }
+    
+    func test_givenRequestFactory_whenCreateUserFeedGetRequestIsCalled_withAscendingTrue_thenURLRequestIsCorrectlyBuilt() throws {
+        let request = try sut.createUserFeedGETRequest(userID: "123", ascending: true)
+        
+        XCTAssertEqual(request.url?.path, "/v3/user/123/feed")
+        XCTAssertEqual(request.httpMethod, "GET")
+        XCTAssertTrue(request.url?.query?.contains("order=ascending") ?? false)
+    }
+    
+    func test_givenRequestFactory_whenCreateUserFeedGetRequestIsCalled_withAscendingFalse_thenURLRequestIsCorrectlyBuilt() throws {
+        let request = try sut.createUserFeedGETRequest(userID: "456", ascending: false)
+        
+        XCTAssertEqual(request.url?.path, "/v3/user/456/feed")
+        XCTAssertEqual(request.httpMethod, "GET")
+        XCTAssertTrue(request.url?.query?.contains("order=descending") ?? false)
+    }
 }

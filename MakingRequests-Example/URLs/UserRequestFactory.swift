@@ -39,4 +39,14 @@ struct UserRequestFactory {
             .body(body)
             .build()
     }
+    
+    func createUserFeedGETRequest(userID: String, ascending: Bool) throws -> URLRequest {
+        let queryItems = [URLQueryItem(name: "order", value: ascending ? "ascending" : "descending")]
+        
+        return try urlRequestBuilderFactory.createBuilder()
+            .path("/v3/user/\(userID)/feed")
+            .method(.GET)
+            .queryItems(queryItems)
+            .build()
+    }
 }
