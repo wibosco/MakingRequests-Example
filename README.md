@@ -3,4 +3,4 @@
 [![License](http://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://github.com/wibosco/MakingRequests-Example/blob/main/LICENSE)
 
 # MakingRequests-Example
-An example project to show how using custom request classes can lead to a more modular project that is easier to test, as shown in this article - https://williamboles.com/making-a-request-with-a-side-of-testing/
+An example project to show how to build test friendly `URLRequest` instances, as shown in this article - https://williamboles.com/not-too-rigid-not-too-loose-building-urlrequests-just-right/
